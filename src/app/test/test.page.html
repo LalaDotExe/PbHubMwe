@@ -6,15 +6,16 @@
   </ion-header>
 
   <ion-content>
-    <ion-list>
-      <ion-item *ngFor="let product of products$ | async"
-        ><ion-thumbnail slot="start">
-          <ion-img [src]="product.image"></ion-img>
-        </ion-thumbnail>
-        <ion-label>{{ product.title }}</ion-label>
-        <ion-label>{{ product.description }}</ion-label>
-        <ion-label>{{ product.price }}</ion-label>
-      </ion-item>
-    </ion-list>
+    <ion-card *ngFor="let product of products$ | async">
+      <ion-card-header>
+        <ion-card-title>{{ product.title }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-img [src]="product.image"></ion-img>
+        <p>{{ product.description }}</p>
+        <p>{{ product.price }}</p>
+      </ion-card-content>
+    </ion-card>
   </ion-content>
 </ng-container>

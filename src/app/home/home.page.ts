@@ -25,7 +25,7 @@ import {
   IonCardHeader,
   IonCardContent,
   IonCardSubtitle,
-  IonApp,
+  IonApp,IonImg
 } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
@@ -37,6 +37,9 @@ import {
   person,
   logOut,informationCircle
 } from 'ionicons/icons';
+import { collection, collectionData, Firestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-home',
@@ -74,15 +77,16 @@ import {
     IonCardHeader,
     IonCardContent,
     IonCardSubtitle,
-    IonBadge,
+    IonBadge,IonImg
   ],
 })
 export class HomePage implements OnInit {
-  productOfTheDay: any;
-  product_Popular: any;
-  Product_Trending: any;
+  products$: Observable<Task[]>;
 
-  constructor(private router: Router) {
+  constructor(private readonly firestore: Firestore) {
+    this.products$ = collectionData(collection(this.firestore, 'products')) as Observable<Task[]>;
+  
+    
     addIcons({
       'home-outline': homeOutline,
       'heart-outline': heartOutline,
@@ -92,20 +96,22 @@ export class HomePage implements OnInit {
       'logout': logOut,
       'informationcircle' :informationCircle
     });
+
+    
   }
 
-  ngOnInit() {
-    // You can fetch the product data here from an API or service
-  }
-
-  openProductDetails(product: any, category: string) {
-    // Handle navigation to product details page
-    // Pass necessary data using query params or a state management solution
-    this.router.navigate(['/product-details'], {
-      queryParams: {
-        product: JSON.stringify(product),
-        category: category,
-      },
-    });
-  }
+  ngOnInit() {}
 }
+
+export interface Task {
+  title: string;
+  description: string;
+  image: string;
+  price: number;
+}
+
+
+
+
+
+

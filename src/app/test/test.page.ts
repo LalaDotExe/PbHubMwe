@@ -15,7 +15,7 @@ import {
   IonLabel,
   IonButton,
   IonImg,
-  IonThumbnail,
+  IonThumbnail,IonCard,IonCardContent,IonCardHeader,IonCardTitle,IonGrid,IonRow,IonCol
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -35,7 +35,7 @@ import {
     IonToolbar,
     CommonModule,
     FormsModule,
-    IonThumbnail,
+    IonThumbnail,IonCard,IonCardContent,IonCardHeader,IonCardTitle,IonGrid,IonRow,IonCol
   ],
 })
 export class TestPage implements OnInit {
