@@ -38,16 +38,15 @@ export const routes: Routes = [
   },
   {
     path: 'homeadmin',
-    loadComponent: () => import('./homeadmin/homeadmin.page').then( m => m.HomeadminPage)
+    loadComponent: () =>
+      import('./homeadmin/homeadmin.page').then((m) => m.HomeadminPage),
   },
   {
     path: 'about',
-    loadComponent: () => import('./about/about.page').then( m => m.AboutPage)
+    loadComponent: () => import('./about/about.page').then((m) => m.AboutPage),
   },
   {
     path: 'test',
-    loadComponent: () => import('./test/test.page').then( m => m.TestPage)
+    loadComponent: () => import('./test/test.page').then((m) => m.TestPage),
   },
-
-
 ];
