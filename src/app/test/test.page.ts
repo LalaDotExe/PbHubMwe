@@ -14,6 +14,8 @@ import {
   IonItem,
   IonLabel,
   IonButton,
+  IonImg,
+  IonThumbnail,
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -22,6 +24,7 @@ import {
   styleUrls: ['./test.page.scss'],
   standalone: true,
   imports: [
+    IonImg,
     IonButton,
     IonLabel,
     IonItem,
@@ -32,11 +35,12 @@ import {
     IonToolbar,
     CommonModule,
     FormsModule,
+    IonThumbnail,
   ],
 })
 export class TestPage implements OnInit {
   products$ = collectionData(
-    collection(this.firestore, 'product')
+    collection(this.firestore, 'products')
   ) as Observable<Task[]>;
   constructor(private readonly firestore: Firestore) {}
 
@@ -44,6 +48,8 @@ export class TestPage implements OnInit {
 }
 
 export interface Task {
-  name: string;
+  title: string;
   description: string;
+  image: string;
+  price: number;
 }
