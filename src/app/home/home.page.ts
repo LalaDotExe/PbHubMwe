@@ -6,7 +6,7 @@ import {
   IonButton, IonItem, IonFooter, IonLabel, IonCard, IonList, IonRow, IonCol, IonGrid, IonMenu, IonSearchbar, IonCardTitle, IonCardHeader, IonCardContent, IonCardSubtitle, IonApp} from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
-import { homeOutline, heartOutline, cartOutline ,cart} from 'ionicons/icons';
+import { homeOutline, heartOutline, cartOutline ,cart,person,logOut} from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +29,9 @@ export class HomePage implements OnInit {
       'home-outline': homeOutline,
       'heart-outline': heartOutline,
       'cart-outline': cartOutline,
-      'cart': cart
+      'cart': cart,
+      'person':person,
+      'logout':logOut
     });
   
   };

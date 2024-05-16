@@ -6,7 +6,7 @@ import {
   IonButton, IonItem, IonFooter, IonLabel, IonCard, IonList, IonRow, IonCol, IonGrid, IonMenu, IonSearchbar, IonCardTitle, IonCardHeader, IonCardContent, IonCardSubtitle, IonApp, IonImg, IonFabButton, IonFab } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
-import { homeOutline, heartOutline, cartOutline ,cart,trash,camera} from 'ionicons/icons';
+import { homeOutline, heartOutline, cartOutline ,cart,trash,camera,person,logOut} from 'ionicons/icons';
 
 
 
@@ -30,6 +30,7 @@ export class HomeadminPage implements OnInit {
     
 
     
+    
   
   
     addIcons({
@@ -38,7 +39,9 @@ export class HomeadminPage implements OnInit {
       'cart-outline': cartOutline,
       'cart': cart,
       'trash':trash,
-      'camera':camera
+      'camera':camera,
+      'person':person,
+      'logout':logOut
     });
     
   

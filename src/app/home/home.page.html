@@ -4,7 +4,22 @@
       <ion-title size="large" class="ion-text-center large-font">PB Hub</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="ion-padding">This is the menu content.</ion-content>
+  <ion-content class="ion-padding" class="right-align">
+    <ion-list>
+     <a href="profilepage">
+      <ion-item >
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-label>Manage Profile</ion-label>
+      </ion-item>
+    </a>
+    <a href="loginpage">
+      <ion-item >
+        <ion-icon slot="start" name="logOut"></ion-icon>
+        <ion-label>Log Out</ion-label>
+      </ion-item>
+      </a>
+      </ion-list>
+  </ion-content>
 </ion-menu>
 <div class="ion-page" id="main-content">
   <ion-header>
