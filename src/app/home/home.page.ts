@@ -35,7 +35,7 @@ import {
   cartOutline,
   cart,
   person,
-  logOut,
+  logOut,informationCircle
 } from 'ionicons/icons';
 
 @Component({
@@ -87,9 +87,10 @@ export class HomePage implements OnInit {
       'home-outline': homeOutline,
       'heart-outline': heartOutline,
       'cart-outline': cartOutline,
-      cart: cart,
-      person: person,
-      logout: logOut,
+      'cart': cart,
+      'person': person,
+      'logout': logOut,
+      'informationcircle' :informationCircle
     });
   }
 

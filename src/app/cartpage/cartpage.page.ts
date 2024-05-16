@@ -78,7 +78,8 @@ export class CartpagePage implements OnInit {
           body: 'Your order will be delivered soon',
           id: 1,
           schedule: { at: new Date(Date.now() + 1000 * 5) },
-    
+          largeIcon:'res://drawable/icon_foreground.png',
+          smallIcon:'res://drawable/icon_foreground.png',
           actionTypeId: '',
           extra: null
         }

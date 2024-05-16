@@ -6,7 +6,7 @@ export const routes: Routes = [
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
   },
   {
-    path: 'splash',
+    path: '',
     redirectTo: 'loginpage',
     pathMatch: 'full',
   },
