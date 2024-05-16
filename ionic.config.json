@@ -1,0 +1,7 @@
+{
+  "name": "PbHubMwe",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
