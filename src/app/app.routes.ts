@@ -20,7 +20,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./profilepage/profilepage.page').then((m) => m.ProfilepagePage),
   },
- 
+
   {
     path: 'loginpage',
     loadComponent: () =>
@@ -30,11 +30,6 @@ export const routes: Routes = [
     path: 'cartpage',
     loadComponent: () =>
       import('./cartpage/cartpage.page').then((m) => m.CartpagePage),
-  },
-  {
-    path: 'homeadmin',
-    loadComponent: () =>
-      import('./homeadmin/homeadmin.page').then((m) => m.HomeadminPage),
   },
   {
     path: 'details',
