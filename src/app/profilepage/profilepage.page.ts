@@ -18,7 +18,6 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { cart, trash, camera } from 'ionicons/icons';
-import { PhotoService } from '../services/photo.service';
 
 @Component({
   selector: 'app-profilepage',
@@ -44,7 +43,7 @@ import { PhotoService } from '../services/photo.service';
   ],
 })
 export class ProfilepagePage implements OnInit {
-  constructor(public photoService: PhotoService) {
+  constructor() {
     addIcons({
       cart: cart,
       trash: trash,
