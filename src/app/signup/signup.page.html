@@ -8,31 +8,38 @@
     <div class="ion-margin-top">
       <ion-card>
         <ion-card-content>
-          <form>
-            <ion-item>
-              <ion-label position="floating">Username</ion-label>
-              <ion-input type="email" required></ion-input>
-            </ion-item>
+          <ion-item>
+            <ion-label position="floating">Username</ion-label>
+            <ion-input type="email" required [(ngModel)]="name"></ion-input>
+          </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">Email</ion-label>
-              <ion-input type="email" required></ion-input>
-            </ion-item>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" required [(ngModel)]="email"></ion-input>
+          </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">Password</ion-label>
-              <ion-input type="password" required></ion-input>
-            </ion-item>
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input
+              type="password"
+              required
+              [(ngModel)]="password"
+            ></ion-input>
+          </ion-item>
 
-            <ion-button expand="full" class="ion-margin-top" type="submit"
-              >Sign Up</ion-button
-            >
-          </form>
+          <ion-button color="danger" class="rowStyleButton" (click)="signup()"
+            >SignUp</ion-button
+          >
 
           <div class="ion-margin-top ion-text-center">
             <p>
-              Already have an account? Log in
-              <a href="#" class="ion-text-bold ion-text-underline">Join</a>
+              Already have an account?
+              <button
+                [routerLink]="['/loginpage']"
+                class="ion-text-bold ion-text-underline"
+              >
+                Log in
+              </button>
             </p>
           </div>
         </ion-card-content>

@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NavController } from '@ionic/angular';
+import { RouterLinkWithHref } from '@angular/router';
+import {
+  Auth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut,
+} from '@angular/fire/auth';
 import {
   IonContent,
   IonHeader,
@@ -38,11 +46,28 @@ import {
     IonToolbar,
     CommonModule,
     FormsModule,
+    RouterLinkWithHref,
   ],
 })
 export class SignupPage implements OnInit {
-  constructor() {}
+  name: string = '';
+  email: string = '';
+  password: string = '';
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
+  constructor(public navCntrl: NavController, private auth: Auth) {}
+
   ngOnInit() {}
+
+  async signup() {
+    const user = await createUserWithEmailAndPassword(
+      this.auth,
+      this.email,
+      this.password
+    );
+    return user;
+  }
+
+  gotoLogin() {
+    this.navCntrl.navigateBack('login');
+  }
 }
