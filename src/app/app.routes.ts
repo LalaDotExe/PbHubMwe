@@ -40,6 +40,9 @@ export const routes: Routes = [
     path: 'homeadmin',
     loadComponent: () => import('./homeadmin/homeadmin.page').then( m => m.HomeadminPage)
   },
-  
+  {
+    path: 'about',
+    loadComponent: () => import('./about/about.page').then( m => m.AboutPage)
+  },
 
 ];
