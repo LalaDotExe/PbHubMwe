@@ -15,6 +15,8 @@ import {
   IonFabButton,
   IonFab,
   IonImg,
+  IonButtons,
+  IonBackButton,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { cart, trash, camera } from 'ionicons/icons';
@@ -40,6 +42,8 @@ import { cart, trash, camera } from 'ionicons/icons';
     IonAvatar,
     IonFabButton,
     IonFab,
+    IonButtons,
+    IonBackButton,
   ],
 })
 export class ProfilepagePage implements OnInit {
