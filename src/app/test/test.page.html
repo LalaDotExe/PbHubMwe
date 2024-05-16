@@ -1,0 +1,16 @@
+<ng-container>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title> Test </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let product of products$ | async">
+        <ion-label>{{ product.name }}</ion-label>
+        <ion-label>{{ product.description }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ng-container>
