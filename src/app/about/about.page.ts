@@ -8,6 +8,7 @@ import { IonContent,
          IonButton, 
          IonBackButton,
          IonButtons,
+         IonImg
          } from '@ionic/angular/standalone';
 
 @Component({
@@ -23,7 +24,8 @@ import { IonContent,
             FormsModule,
             IonButton,
             IonBackButton,
-            IonButtons
+            IonButtons,
+            IonImg
           ]
 })
 export class AboutPage implements OnInit {
