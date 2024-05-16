@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title size="large" class="ion-text-center large-font">Product Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <div class="ion-padding">
+      
+    <div class="ion-padding-bottom ion-flex ion-align-items-center">
+      <ion-button fill="clear" class="ion-no-margin ion-no-padding">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <ion-card>
+      <ion-img src="https://placehold.co/120x120" alt="Product Image"></ion-img>
+    </ion-card>
+
+    <ion-card class="ion-margin-top">
+      <ion-card-header>
+        <ion-card-title>Regular Fit Slogan</ion-card-title>
+        <ion-item lines="none">
+          <ion-icon name="star" slot="start" color="warning"></ion-icon>
+          <ion-label>4.0/5 (45 reviews)</ion-label>
+        </ion-item>
+      </ion-card-header>
+      <ion-card-content>
+        <p>The name says it all, the right size slightly snugs the body leaving enough room for comfort in the sleeves and waist.</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-item class="ion-margin-top">
+      <ion-label>Quantity</ion-label>
+      <ion-buttons slot="end">
+        <ion-button>-</ion-button>
+        <ion-input type="number" value="1" min="1" max="10"></ion-input>
+        <ion-button>+</ion-button>
+      </ion-buttons>
+    </ion-item>
+
+    <ion-item class="ion-margin-top">
+      <ion-label class="ion-text-wrap">
+        <p class="ion-text-start">Price</p>
+        <p class="ion-text-start ion-text-bold">$1,190</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-button expand="block" color="success" class="ion-margin-top">Add to Cart</ion-button>
+    
+  </div>
+</ion-content>

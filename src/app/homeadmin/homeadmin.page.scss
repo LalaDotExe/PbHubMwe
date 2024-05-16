@@ -89,3 +89,18 @@ ion-content {
 
 
 
+.min-height-screen {
+    min-height: 300vh;
+  }
+  .position-relative {
+    position: relative;
+  }
+  .absolute-top-right {
+    position: absolute;
+    top: 0rem;
+    right: 0rem;
+  }
+
+.red{
+    color: red;
+}
