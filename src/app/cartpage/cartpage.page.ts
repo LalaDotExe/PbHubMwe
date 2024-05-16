@@ -24,6 +24,9 @@ import {
   IonBackButton,
   IonButtons,
 } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { arrowForward } from 'ionicons/icons';
+import{LocalNotifications, ScheduleOptions} from '@capacitor/local-notifications';
 
 @Component({
   selector: 'app-cartpage',
@@ -57,8 +60,35 @@ import {
   ],
 })
 export class CartpagePage implements OnInit {
-  constructor() {}
+  constructor() {
+    addIcons({
+      'arrow-forward': arrowForward,
+    });
+  }
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {}
+
+
+  async scheduledNotification() {
+    let options: ScheduleOptions = {
+      notifications: [
+        {
+          title: 'Your order is placed successfully',
+          body: 'Your order will be delivered soon',
+          id: 1,
+          schedule: { at: new Date(Date.now() + 1000 * 5) },
+    
+          actionTypeId: '',
+          extra: null
+        }
+      ]
+    };
+  
+    try {
+      await LocalNotifications.schedule(options);
+    } catch (ex) {
+      alert(JSON.stringify(ex));
+    }
+  }
 }
