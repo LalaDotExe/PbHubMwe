@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { NavController } from '@ionic/angular';
+import { RouterLinkWithHref } from '@angular/router';
 
 import {
   Auth,
@@ -50,6 +51,7 @@ import {
     IonButton,
     CommonModule,
     FormsModule,
+    RouterLinkWithHref,
   ],
 })
 export class LoginpagePage implements OnInit {
