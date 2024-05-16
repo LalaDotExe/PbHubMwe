@@ -1,3 +1,16 @@
 ion-content {
-    --background: #cbcccd;
-  }
+  --background: #cbcccd;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.small-image.rounded-full {
+  width: 200px;  /* adjust as needed */
+  height: 190px; /* adjust as needed */
+  border-radius: 50%;
+  border: 2px solid black;
+}

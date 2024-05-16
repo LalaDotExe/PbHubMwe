@@ -76,20 +76,15 @@ export class CartpagePage implements OnInit {
         {
           title: 'Your order is placed successfully',
           body: 'Your order will be delivered soon',
-          id: Date.now(), // unique ID for each notification
+          id: 1,
           schedule: { at: new Date(Date.now() + 1000 * 5) },
           largeIcon:'res://drawable/icon_foreground.png',
           smallIcon:'res://drawable/icon_foreground.png',
-          actionTypeId: 'track_order', // action button
+          actionTypeId: '',
           extra: null
         }
       ]
     };
-  
-    const scheduled = await LocalNotifications.schedule(options);
-    if (!scheduled) {
-      console.error('Failed to schedule notification');
-    }
   
     try {
       await LocalNotifications.schedule(options);
