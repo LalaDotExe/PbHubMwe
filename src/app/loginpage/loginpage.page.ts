@@ -4,12 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { RouterLinkWithHref } from '@angular/router';
 
-import {
-  Auth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut,
-} from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import {
   IonContent,
   IonHeader,
