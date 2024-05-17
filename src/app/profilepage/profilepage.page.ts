@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import {
   IonContent,
   IonHeader,
@@ -18,9 +17,12 @@ import {
   IonImg,
   IonButtons,
   IonBackButton,
+  IonLabel,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { cart, trash, camera } from 'ionicons/icons';
+import { person, mail } from 'ionicons/icons';
+import { Auth, User } from '@angular/fire/auth';
+import { Firestore, doc, getDoc, updateDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-profilepage',
@@ -28,6 +30,7 @@ import { cart, trash, camera } from 'ionicons/icons';
   styleUrls: ['./profilepage.page.scss'],
   standalone: true,
   imports: [
+    IonLabel,
     IonImg,
     IonContent,
     IonHeader,
@@ -48,13 +51,35 @@ import { cart, trash, camera } from 'ionicons/icons';
   ],
 })
 export class ProfilepagePage implements OnInit {
-  constructor() {
+  user: User | null = null;
+  userData: any = {}; // This will hold additional user data
+
+  constructor(private auth: Auth, private firestore: Firestore) {
     addIcons({
-      cart: cart,
-      trash: trash,
-      camera: camera,
+      person: person,
+      mail: mail,
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        this.user = user;
+        const userDocRef = doc(this.firestore, `users/${user.uid}`);
+        const userDoc = await getDoc(userDocRef);
+        if (userDoc.exists()) {
+          this.userData = userDoc.data();
+        }
+      }
+    });
+  }
+
+  async save() {
+    if (this.user) {
+      const userDocRef = doc(this.firestore, `users/${this.user.uid}`);
+      await updateDoc(userDocRef, {
+        telephone: this.userData.telephone,
+      });
+    }
+  }
 }

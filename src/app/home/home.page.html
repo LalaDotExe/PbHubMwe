@@ -44,24 +44,24 @@
       <ion-title size="large" class="ion-text-center large-font"
         >Discover</ion-title
       >
-      <ion-icon slot="end" size="medium" name="cart" class="icon-adjust"
+      <!-- <ion-icon slot="end" size="medium" name="cart" class="icon-adjust"
         ><ion-badge slot="end"></ion-badge
-      ></ion-icon>
+      ></ion-icon> -->
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
     <ion-searchbar></ion-searchbar>
-    
-      <ion-card *ngFor="let product of products$ | async">
-        <ion-card-header>
-          <ion-card-title>{{ product.title }}</ion-card-title>
-        </ion-card-header>
-  
-        <ion-card-content>
-          <ion-img [src]="product.image"></ion-img>
-          <p>{{ product.description }}</p>
-          <p>{{ product.price }}</p>
-        </ion-card-content>
-      </ion-card>
-    </ion-content>
+
+    <ion-card *ngFor="let product of products$ | async">
+      <ion-card-header>
+        <ion-card-title>{{ product.title }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-img [src]="product.image"></ion-img>
+        <p>{{ product.description }}</p>
+        <p>{{ product.price }}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
 </div>

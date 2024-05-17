@@ -8,6 +8,11 @@
 
     
 }
+
+ion-content {
+    --background: #cbcccd;
+  }
+
 img {
     display: block;
     border-radius: 50%;
@@ -27,4 +32,10 @@ ion-avatar {
 ion-toolbar {
     --background: #0b3948;
 
+  }
+
+  ion-list{
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 20px;
   }
