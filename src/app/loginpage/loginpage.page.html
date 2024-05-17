@@ -33,13 +33,17 @@
             {{ errorMessage }}
           </div>
 
-          <ion-button
+          <!-- <ion-button
             color="secondary"
             expand="block"
             class="ion-padding-start ion-padding-top"
             (click)="login()"
             >Login</ion-button
-          >
+          > --><ion-button (click)="login()" [disabled]="isLoading">
+            <span *ngIf="!isLoading">Login</span>
+            <ion-spinner *ngIf="isLoading"></ion-spinner>
+            <!-- Display spinner when loading -->
+          </ion-button>
 
           <div class="ion-margin-top ion-text-center">
             <p>

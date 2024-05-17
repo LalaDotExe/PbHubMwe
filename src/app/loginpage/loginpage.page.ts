@@ -21,6 +21,8 @@ import {
   IonRow,
   IonCol,
   IonIcon,
+  LoadingController,
+  IonSpinner,
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -29,6 +31,7 @@ import {
   styleUrls: ['./loginpage.page.scss'],
   standalone: true,
   imports: [
+    IonSpinner,
     IonIcon,
     IonCol,
     IonRow,
@@ -53,13 +56,27 @@ export class LoginpagePage implements OnInit {
   email: string = '';
   password: string = '';
   errorMessage: string = '';
+  isLoading: boolean = false; // Variable to track loading state
 
-  constructor(public navCntrl: NavController, private auth: Auth) {}
+  constructor(
+    public navCntrl: NavController,
+    private auth: Auth,
+    private loadingCtrl: LoadingController
+  ) {}
 
   ngOnInit() {}
 
   async login() {
+    let loading; // Declare loading variable outside try block
     try {
+      this.isLoading = true; // Set loading state to true
+      loading = await this.loadingCtrl.create({
+        message: 'Please wait...', // Message to display in the spinner
+        translucent: true,
+        cssClass: 'custom-loading',
+      });
+      await loading.present();
+
       const userCredential = await signInWithEmailAndPassword(
         this.auth,
         this.email,
@@ -83,6 +100,11 @@ export class LoginpagePage implements OnInit {
       } else {
         // Handle other errors
         this.errorMessage = 'Incorrect password or username';
+      }
+    } finally {
+      this.isLoading = false; // Set loading state to false
+      if (loading) {
+        await loading.dismiss();
       }
     }
   }
