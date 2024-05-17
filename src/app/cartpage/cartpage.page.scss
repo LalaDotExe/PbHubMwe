@@ -11,14 +11,21 @@ ion-toolbar {
 
   .product-card {
     width: 100%;
-    margin-bottom: 20px; /* Add margin between cards */
+    margin-bottom: 15px; /* Add margin between cards */
+    --background: #f6f6f6;
+    margin-left: -1px;
+    color: black;
   }
   
   .product-thumbnail {
     width: 100px; /* Set width of the thumbnail */
     height: 100px; /* Set height of the thumbnail */
     
-    object-fit: cover; /* Maintain aspect ratio and fill the container */
+    object-fit: contain; /* Maintain aspect ratio and fill the container */
+  }
+  .product-price{
+    font-weight: bold;
+    padding-top: 10px;
   }
   
   
