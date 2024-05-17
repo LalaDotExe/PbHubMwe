@@ -50,11 +50,14 @@
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-    <ion-searchbar></ion-searchbar>
+    <ion-searchbar
+      [(ngModel)]="searchTerm"
+      (ionInput)="filterProducts()"
+    ></ion-searchbar>
 
     <ion-grid>
       <ion-row>
-        <ng-container *ngFor="let product of products$ | async">
+        <ng-container *ngFor="let product of filteredProducts">
           <ion-col size="12" size-sm="6" size-md="4" size-lg="3">
             <ion-card class="product-card">
               <ion-card-header>

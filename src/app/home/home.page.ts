@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ProductService, Product } from '../product.service';
+import { Observable, of } from 'rxjs';
 import {
   IonContent,
   IonHeader,
@@ -25,9 +27,9 @@ import {
   IonCardHeader,
   IonCardContent,
   IonCardSubtitle,
-  IonApp,IonImg
+  IonApp,
+  IonImg,
 } from '@ionic/angular/standalone';
-import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import {
   homeOutline,
@@ -35,11 +37,9 @@ import {
   cartOutline,
   cart,
   person,
-  logOut,informationCircle
+  logOut,
+  informationCircle,
 } from 'ionicons/icons';
-import { collection, collectionData, Firestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-
 
 @Component({
   selector: 'app-home',
@@ -77,41 +77,38 @@ import { Observable } from 'rxjs';
     IonCardHeader,
     IonCardContent,
     IonCardSubtitle,
-    IonBadge,IonImg
+    IonBadge,
+    IonImg,
   ],
 })
 export class HomePage implements OnInit {
-  products$: Observable<Task[]>;
+  products$: Observable<Product[]> = of([]);
+  filteredProducts: Product[] = [];
+  searchTerm: string = '';
 
-  constructor(private readonly firestore: Firestore) {
-    this.products$ = collectionData(collection(this.firestore, 'products')) as Observable<Task[]>;
-  
-    
+  constructor(private productService: ProductService) {
     addIcons({
       'home-outline': homeOutline,
       'heart-outline': heartOutline,
       'cart-outline': cartOutline,
-      'cart': cart,
-      'person': person,
-      'logout': logOut,
-      'informationcircle' :informationCircle
+      cart: cart,
+      person: person,
+      logout: logOut,
+      informationcircle: informationCircle,
     });
-
-    
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.productService.getProducts().subscribe((products) => {
+      this.filteredProducts = products;
+    });
+  }
+
+  filterProducts() {
+    this.productService.getProducts().subscribe((products) => {
+      this.filteredProducts = products.filter((product) =>
+        product.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    });
+  }
 }
-
-export interface Task {
-  title: string;
-  description: string;
-  image: string;
-  price: number;
-}
-
-
-
-
-
-
