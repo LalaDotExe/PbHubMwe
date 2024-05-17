@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NavController, LoadingController } from '@ionic/angular';
 import { RouterLinkWithHref } from '@angular/router';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { Firestore, doc, setDoc } from '@angular/fire/firestore';
 import {
   IonContent,
   IonHeader,
@@ -53,6 +54,7 @@ export class SignupPage implements OnInit {
   constructor(
     public navCntrl: NavController,
     private auth: Auth,
+    private firestore: Firestore,
     private loadingController: LoadingController
   ) {}
 
@@ -74,11 +76,22 @@ export class SignupPage implements OnInit {
     await loading.present();
 
     try {
-      const user = await createUserWithEmailAndPassword(
+      const userCredential = await createUserWithEmailAndPassword(
         this.auth,
         this.email,
         this.password
       );
+
+      const user = userCredential.user;
+
+      // Save additional user data in Firestore
+      const userDocRef = doc(this.firestore, `users/${user.uid}`);
+      await setDoc(userDocRef, {
+        username: this.name,
+        email: this.email,
+        profile: '', // Initialize with an empty profile, you can add more fields as needed
+      });
+
       await loading.dismiss();
       this.gotoLogin();
       return user;
