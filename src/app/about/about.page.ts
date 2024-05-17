@@ -10,6 +10,8 @@ import { IonContent,
          IonButtons,
          IonImg
          } from '@ionic/angular/standalone';
+import { Browser } from '@capacitor/browser';
+
 
 @Component({
   selector: 'app-about',
@@ -31,6 +33,7 @@ import { IonContent,
 export class AboutPage implements OnInit {
 
   constructor() { }
+ async openBrowser(){await Browser.open({ url: 'https://pb.edu.bn/' });}
 
   ngOnInit() {
   }
