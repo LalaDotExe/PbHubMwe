@@ -26,7 +26,12 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { arrowForward } from 'ionicons/icons';
-import{LocalNotifications, ScheduleOptions} from '@capacitor/local-notifications';
+import {
+  LocalNotifications,
+  ScheduleOptions,
+} from '@capacitor/local-notifications';
+import { collection, collectionData, Firestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cartpage',
@@ -60,7 +65,11 @@ import{LocalNotifications, ScheduleOptions} from '@capacitor/local-notifications
   ],
 })
 export class CartpagePage implements OnInit {
-  constructor() {
+  products$ = collectionData(
+    collection(this.firestore, 'products')
+  ) as Observable<Task[]>;
+
+  constructor(private readonly firestore: Firestore) {
     addIcons({
       'arrow-forward': arrowForward,
     });
@@ -68,7 +77,6 @@ export class CartpagePage implements OnInit {
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {}
-
 
   async scheduledNotification() {
     let options: ScheduleOptions = {
@@ -78,18 +86,24 @@ export class CartpagePage implements OnInit {
           body: 'Your order will be delivered soon',
           id: 1,
           schedule: { at: new Date(Date.now() + 1000 * 5) },
-          largeIcon:'res://drawable/icon_foreground.png',
-          smallIcon:'res://drawable/icon_foreground.png',
+          largeIcon: 'res://drawable/icon_foreground.png',
+          smallIcon: 'res://drawable/icon_foreground.png',
           actionTypeId: '',
-          extra: null
-        }
-      ]
+          extra: null,
+        },
+      ],
     };
-  
+
     try {
       await LocalNotifications.schedule(options);
     } catch (ex) {
       alert(JSON.stringify(ex));
     }
   }
+}
+export interface Task {
+  title: string;
+  description: string;
+  image: string;
+  price: number;
 }

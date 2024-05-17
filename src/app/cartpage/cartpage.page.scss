@@ -1,6 +1,4 @@
-.ion-no-padding{
-    width: 100%;
-}
+
 
 ion-toolbar {
     --background: #0b3948;
@@ -10,3 +8,18 @@ ion-toolbar {
   ion-content {
     --background: #cbcccd;
   }
+
+  .product-card {
+    width: 100%;
+    margin-bottom: 20px; /* Add margin between cards */
+  }
+  
+  .product-thumbnail {
+    width: 100px; /* Set width of the thumbnail */
+    height: 100px; /* Set height of the thumbnail */
+    
+    object-fit: cover; /* Maintain aspect ratio and fill the container */
+  }
+  
+  
+  
