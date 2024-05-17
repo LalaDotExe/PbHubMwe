@@ -1,6 +1,5 @@
 <ion-content [fullscreen]="true">
   <ion-content class="ion-padding">
-    
     <div class="ion-text-center">
       <h2 class="ion-margin-top ion-text-bold">Login to your account</h2>
       <p class="ion-margin-top ion-text-small">It’s great to see you again.</p>
@@ -8,41 +7,37 @@
 
     <div class="ion-margin-top">
       <div class="container">
-        <img src="assets/logo.png" alt="" class="small-image rounded-full">
-      </div> <ion-card>
+        <img src="assets/logo.png" alt="" class="small-image rounded-full" />
+      </div>
+      <ion-card>
         <ion-card-content>
           <ion-item>
             <ion-label position="floating">Email</ion-label>
-            <ion-input
-              type="text"
-              placeholder="your email"
-              required
-              [(ngModel)]="email"
-            ></ion-input>
+            <ion-input type="text" required [(ngModel)]="email"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label position="floating">Password</ion-label>
             <ion-input
               type="password"
-              placeholder="your password"
               required
               [(ngModel)]="password"
             ></ion-input>
           </ion-item>
 
           <!-- Display error message -->
-          <div *ngIf="errorMessage" class="error-message">
+          <div
+            *ngIf="errorMessage"
+            class="error-message ion-margin-top ion-text-center"
+          >
             {{ errorMessage }}
           </div>
 
-          <div class="ion-margin-top ion-text-right">
-            <ion-button fill="clear" size="small" href="#"
-              >Forgot your password? Reset your password</ion-button
-            >
-          </div>
-
-          <ion-button color="danger" class="rowStyleButton" (click)="login()"
+          <ion-button
+            color="secondary"
+            expand="block"
+            class="ion-padding-start ion-padding-top"
+            (click)="login()"
             >Login</ion-button
           >
 

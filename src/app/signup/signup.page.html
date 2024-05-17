@@ -27,7 +27,15 @@
             ></ion-input>
           </ion-item>
 
-          <ion-button color="danger" class="rowStyleButton" (click)="signup()"
+          <ion-text color="danger" *ngIf="errorMessage">
+            {{ errorMessage }}
+          </ion-text>
+
+          <ion-button
+            color="secondary"
+            expand="block"
+            class="ion-padding-start ion-padding-top"
+            (click)="signup()"
             >SignUp</ion-button
           >
 
